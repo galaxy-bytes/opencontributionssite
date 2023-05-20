@@ -34,7 +34,7 @@ jobs:
 
 on:
   push:
-    branches: ["main"]
+    branches: ["fix-pages"]
   workflow_dispatch:
 
 permissions:
