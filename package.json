@@ -6,6 +6,7 @@
 		"@types/mdx": "^2.0.5",
 		"konamimojisplosion": "^0.5.2",
 		"next": "13.4.2",
+		"next-compose-plugins": "^2.2.1",
 		"react": "18.2.0",
 		"react-dom": "18.2.0",
 		"rehype-autolink-headings": "^6.1.1",
