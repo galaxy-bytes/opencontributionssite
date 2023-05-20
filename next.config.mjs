@@ -4,16 +4,27 @@ import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
 
 const withMDX = nextMdx({
-	extension: /\.mdx?$/,
-	options: {
-		remarkPlugins: [remarkGfm],
-		rehypePlugins: [rehypeAutolinkHeadings, rehypeSlug],
-	},
+  extension: /\.mdx?$/,
+  options: {
+    remarkPlugins: [remarkGfm],
+    rehypePlugins: [rehypeAutolinkHeadings, rehypeSlug],
+  },
 });
 
 export default withMDX({
-	reactStrictMode: true,
-	experimental: {
-		mdxRs: true,
-	},
+  pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
+  reactStrictMode: true,
+  webpack: (config, { defaultLoaders }) => {
+    config.module.rules.push({
+      test: /\.mdx$/,
+      use: [
+        defaultLoaders.babel,
+        {
+          loader: '@mdx-js/loader',
+        },
+      ],
+    });
+
+    return config;
+  },
 });
